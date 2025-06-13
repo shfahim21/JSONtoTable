@@ -135,11 +135,3 @@ async function generatePDF() {
         pdfBtnText.textContent = 'Export as PDF';
     }
 }
-
-/**
- * Toggle visibility of PDF settings panel
- */
-function togglePDFSettings() {
-    const settings = document.getElementById('pdfSettings');
-    settings.classList.toggle('show');
-}

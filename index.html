@@ -10,60 +10,50 @@
 </head>
 <body>
     <div class="container">
-        <h1>Clean JSON to Table with PDF Export</h1>
+        <div class="header">
+            <img src="assets/icon.png" alt="JSON to Table Logo" class="logo">
+            <h1>JSON to Table</h1>
+        </div>
         <p class="description">Convert JSON data into clean, readable tables and export as PDF</p>
         
         <div class="input-section">
             <textarea id="jsonInput" placeholder="Paste your JSON here...">
 {
-  "name": "Root",
-  "children": [
-    {
-      "name": "Branch A",
-      "children": [
-        {
-          "name": "Leaf A1",
-          "children": []
-        },
-        {
-          "name": "Leaf A2",
-          "children": []
-        },
-        {
-          "name": "Leaf A3",
-          "children": []
-        }
-      ]
+  "user": {
+    "name": "Alice Johnson",
+    "age": 28,
+    "email": "alice@email.com",
+    "active": true,
+    "address": {
+      "street": "123 Main St",
+      "city": "New York",
+      "country": "USA"
     },
-    {
-      "name": "Branch B",
-      "children": [
-        {
-          "name": "Leaf B1",
-          "children": []
-        },
-        {
-          "name": "Leaf B2",
-          "children": [
-            {
-              "name": "Leaf B2.1",
-              "children": []
-            }
-          ]
-        }
-      ]
-    }
-  ]
+    "hobbies": ["reading", "photography", "hiking"],
+    "projects": [
+      {
+        "name": "Website Redesign",
+        "status": "completed",
+        "budget": 15000
+      },
+      {
+        "name": "Mobile App",
+        "status": "in-progress",
+        "budget": 25000
+      }
+    ]
+  },
+  "company": "Tech Corp",
+  "employees": 150,
+  "founded": 2018
 }
             </textarea>
             
             <div class="button-group">
                 <button class="generate-btn" onclick="generateTable()">Generate Clean Table</button>
-                <button class="hierarchical-btn" onclick="generateHierarchicalTable()">Generate Tree Table</button>
                 <button class="pdf-btn" id="pdfBtn" onclick="generatePDF()" disabled>
                     <span id="pdfBtnText">Export as PDF</span>
                 </button>
-                <button class="settings-btn" onclick="togglePDFSettings()">PDF Settings</button>
             </div>
             
             <div id="pdfSettings" class="pdf-settings">

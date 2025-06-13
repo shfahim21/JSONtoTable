@@ -56,14 +56,6 @@ button {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
 }
 
-.settings-btn {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-}
-
-.hierarchical-btn {
-    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-}
-
 button:hover {
     transform: translateY(-2px);
 }
@@ -75,16 +67,12 @@ button:disabled {
 }
 
 .pdf-settings {
-    display: none;
+    display: block;
     background: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
     margin-top: 15px;
     border: 1px solid #e9ecef;
-}
-
-.pdf-settings.show {
-    display: block;
 }
 
 .settings-grid {
@@ -231,9 +219,26 @@ button:disabled {
     margin-top: 15px;
 }
 
+/* Header and Logo Styles */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.logo {
+    height: 60px;
+    width: auto;
+    max-width: 200px;
+    object-fit: contain;
+}
+
 h1 {
     color: #2c3e50;
     margin-bottom: 10px;
+    margin: 0;
 }
 
 .description {
@@ -280,6 +285,23 @@ h1 {
     to { transform: rotate(360deg); }
 }
 
+/* Responsive styles for header and logo */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo {
+        height: 40px;
+    }
+    
+    h1 {
+        font-size: 24px;
+        text-align: center;
+    }
+}
+
 /* PDF specific styles */
 @media print {
     body {
@@ -291,40 +313,4 @@ h1 {
         border-radius: 0;
         max-width: none;
     }
-}
-
-/* Hierarchical Table Styles */
-.hierarchical-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.hierarchical-table th {
-    background-color: #f5f7fa;
-    color: #495057;
-    text-align: left;
-    padding: 12px 15px;
-    font-weight: 600;
-    border-bottom: 2px solid #e9ecef;
-}
-
-.hierarchical-table td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.hierarchical-table .root-row {
-    font-weight: 600;
-    background-color: #f8f9fa;
-}
-
-.hierarchical-table .child-row:hover {
-    background-color: #f8f9fa;
-}
-
-/* Tree branch line styling (optional) */
-.hierarchical-table .child-row td:first-child {
-    position: relative;
 }
