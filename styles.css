@@ -1,0 +1,330 @@
+/* Main styles for JSON to Table application */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 20px;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+}
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    resize: vertical;
+    background: #fafafa;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+    font-weight: 500;
+}
+
+.generate-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.pdf-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.settings-btn {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.hierarchical-btn {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.pdf-settings {
+    display: none;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid #e9ecef;
+}
+
+.pdf-settings.show {
+    display: block;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.setting-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting-item label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.setting-item select,
+.setting-item input {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background: white;
+}
+
+.main-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+}
+
+.main-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+}
+
+.main-table tr:last-child td {
+    border-bottom: none;
+}
+
+.key-column {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    width: 30%;
+    border-right: 2px solid #e9ecef;
+}
+
+.value-column {
+    background: white;
+    color: #212529;
+}
+
+.nested-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.nested-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.nested-table tr:last-child td {
+    border-bottom: none;
+}
+
+.nested-key {
+    background: #f1f3f4;
+    font-weight: 500;
+    color: #5f6368;
+    width: 35%;
+    border-right: 1px solid #e8eaed;
+}
+
+.nested-value {
+    background: white;
+    color: #202124;
+}
+
+.array-item {
+    display: block;
+    padding: 4px 8px;
+    margin: 2px 0;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 3px solid #4285f4;
+}
+
+.array-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.primitive-value {
+    font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+    font-size: 14px;
+}
+
+.string-value {
+    color: #0d7377;
+}
+
+.number-value {
+    color: #d63384;
+}
+
+.boolean-value {
+    color: #6f42c1;
+    font-weight: 500;
+}
+
+.null-value {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.error {
+    color: #dc3545;
+    background: #f8d7da;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.success {
+    color: #155724;
+    background: #d4edda;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #6c757d;
+    margin-bottom: 25px;
+}
+
+.pdf-content {
+    background: white;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.pdf-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 20px;
+}
+
+.pdf-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.pdf-date {
+    color: #6c757d;
+    margin-top: 10px;
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* PDF specific styles */
+@media print {
+    body {
+        margin: 0;
+        background: white;
+    }
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: none;
+    }
+}
+
+/* Hierarchical Table Styles */
+.hierarchical-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hierarchical-table th {
+    background-color: #f5f7fa;
+    color: #495057;
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.hierarchical-table td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.hierarchical-table .root-row {
+    font-weight: 600;
+    background-color: #f8f9fa;
+}
+
+.hierarchical-table .child-row:hover {
+    background-color: #f8f9fa;
+}
+
+/* Tree branch line styling (optional) */
+.hierarchical-table .child-row td:first-child {
+    position: relative;
+}
