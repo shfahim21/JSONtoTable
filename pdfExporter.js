@@ -9,7 +9,6 @@
  */
 async function generatePDF() {
     const pdfBtn = document.getElementById('pdfBtn');
-    const pdfBtnText = document.getElementById('pdfBtnText');
     
     if (!currentJsonData) {
         alert('Please generate a table first!');
@@ -18,7 +17,7 @@ async function generatePDF() {
     
     // Show loading state
     pdfBtn.disabled = true;
-    pdfBtnText.innerHTML = '<span class="loading"></span> Generating PDF...';
+    pdfBtn.textContent = 'Generating...';
     
     try {
         // Get settings
@@ -132,6 +131,6 @@ async function generatePDF() {
     } finally {
         // Reset button state
         pdfBtn.disabled = false;
-        pdfBtnText.textContent = 'Export as PDF';
+        pdfBtn.textContent = 'Export PDF';
     }
 }

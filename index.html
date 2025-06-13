@@ -3,22 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clean JSON to Table with PDF Export</title>
+    <title>JSON to Table</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="assets/icon.png" alt="JSON to Table Logo" class="logo">
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">◐</button>
+        <div class="title-section">
+            <img src="assets/icon.png" alt="JSON to Table" class="title-icon">
             <h1>JSON to Table</h1>
         </div>
         <p class="description">Convert JSON data into clean, readable tables and export as PDF</p>
         
-        <div class="input-section">
-            <textarea id="jsonInput" placeholder="Paste your JSON here...">
-{
+        <div class="main-content">
+            <div class="input-section">
+                <textarea id="jsonInput" placeholder="Paste your JSON here...">{
   "user": {
     "name": "Alice Johnson",
     "age": 28,
@@ -46,52 +48,52 @@
   "company": "Tech Corp",
   "employees": 150,
   "founded": 2018
-}
-            </textarea>
+}</textarea>
             
-            <div class="button-group">
-                <button class="generate-btn" onclick="generateTable()">Generate Clean Table</button>
-                <button class="pdf-btn" id="pdfBtn" onclick="generatePDF()" disabled>
-                    <span id="pdfBtnText">Export as PDF</span>
-                </button>
-            </div>
+                                <div class="button-group">
+                    <button class="generate-btn" onclick="generateTable()">Generate Table</button>
+                    <button class="pdf-btn" id="pdfBtn" onclick="generatePDF()" disabled>Export PDF</button>
+                </div>
             
-            <div id="pdfSettings" class="pdf-settings">
-                <h3>PDF Export Settings</h3>
-                <div class="settings-grid">
-                    <div class="setting-item">
-                        <label for="pageSize">Page Size:</label>
-                        <select id="pageSize">
-                            <option value="a4">A4</option>
-                            <option value="letter">Letter</option>
-                            <option value="legal">Legal</option>
-                            <option value="a3">A3</option>
-                        </select>
-                    </div>
-                    <div class="setting-item">
-                        <label for="orientation">Orientation:</label>
-                        <select id="orientation">
-                            <option value="portrait">Portrait</option>
-                            <option value="landscape">Landscape</option>
-                        </select>
-                    </div>
-                    <div class="setting-item">
-                        <label for="fileName">File Name:</label>
-                        <input type="text" id="fileName" value="json-table-export" placeholder="Enter file name">
-                    </div>
-                    <div class="setting-item">
-                        <label for="quality">Image Quality:</label>
-                        <select id="quality">
-                            <option value="1">High</option>
-                            <option value="2">Medium</option>
-                            <option value="3">Low (Faster)</option>
-                        </select>
+                <div id="pdfSettings" class="pdf-settings">
+                    <h3>Export Settings</h3>
+                    <div class="settings-grid">
+                        <div class="setting-item">
+                            <label for="pageSize">Page Size</label>
+                            <select id="pageSize">
+                                <option value="a4">A4</option>
+                                <option value="letter">Letter</option>
+                                <option value="legal">Legal</option>
+                                <option value="a3">A3</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="orientation">Orientation</label>
+                            <select id="orientation">
+                                <option value="portrait">Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label for="fileName">File Name</label>
+                            <input type="text" id="fileName" value="json-table-export" placeholder="Enter file name">
+                        </div>
+                        <div class="setting-item">
+                            <label for="quality">Quality</label>
+                            <select id="quality">
+                                <option value="1">High</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Low</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            
+            <div class="resize-handle" id="resizeHandle"></div>
         
-        <div id="output"></div>
+            <div id="output"></div>
+        </div>
     </div>
 
     <!-- Load scripts in the correct order -->
