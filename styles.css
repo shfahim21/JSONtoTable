@@ -1,13 +1,18 @@
-/* Minimalist JSON to Table - Dark/Light Foundation */
+/* Minimalist JSON to Table - Light/Dark Foundation */
 :root {
-    --bg-color: #000000;
-    --text-color: #ffffff;
-    --border-color: #333333;
-    --border-light: #222222;
-    --accent-color: #4285f4;
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --border-color: #e0e0e0;
+    --border-light: #f0f0f0;
+    --accent-color: #10b981;
     --error-color: #ea4335;
     --success-color: #34a853;
     --muted-color: #666666;
+    --json-string-color: #d97706;
+    --json-number-color: #2563eb;
+    --json-boolean-color: #db2777;
+    --json-null-color: #6b7280;
+    --json-key-color: #059669;
 }
 
 [data-theme="light"] {
@@ -15,10 +20,15 @@
     --text-color: #000000;
     --border-color: #e0e0e0;
     --border-light: #f0f0f0;
-    --accent-color: #4285f4;
+    --accent-color: #10b981;
     --error-color: #ea4335;
     --success-color: #34a853;
     --muted-color: #666666;
+    --json-string-color: #d97706;
+    --json-number-color: #2563eb;
+    --json-boolean-color: #db2777;
+    --json-null-color: #6b7280;
+    --json-key-color: #059669;
 }
 
 [data-theme="dark"] {
@@ -26,10 +36,15 @@
     --text-color: #ffffff;
     --border-color: #333333;
     --border-light: #222222;
-    --accent-color: #4285f4;
+    --accent-color: #10b981;
     --error-color: #ea4335;
     --success-color: #34a853;
     --muted-color: #666666;
+    --json-string-color: #fbbf24;
+    --json-number-color: #60a5fa;
+    --json-boolean-color: #f472b6;
+    --json-null-color: #9ca3af;
+    --json-key-color: #34d399;
 }
 
 body {
@@ -79,6 +94,31 @@ body {
     color: var(--bg-color);
 }
 
+/* Theme icons - show moon in dark mode, sun in light mode */
+:root .theme-icon-sun {
+    display: inline;
+}
+
+:root .theme-icon-moon {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon-sun {
+    display: none;
+}
+
+[data-theme="dark"] .theme-icon-moon {
+    display: inline;
+}
+
+[data-theme="light"] .theme-icon-sun {
+    display: inline;
+}
+
+[data-theme="light"] .theme-icon-moon {
+    display: none;
+}
+
 /* Typography - Three sizes only */
 .title-section {
     display: flex;
@@ -116,13 +156,16 @@ h1 {
 }
 
 .input-section {
-    flex: 0 0 400px;
+    flex: 0 0 30%;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding-right: 16px;
+    padding: 16px;
     min-width: 300px;
     max-width: 60%;
+    border: 3px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-color);
 }
 
 .resize-handle {
@@ -159,24 +202,35 @@ h1 {
     min-width: 0;
     overflow: auto;
     padding-left: 16px;
+    border: 4px solid var(--border-color);
+    border-radius: 8px;
+    padding: 16px;
 }
 
-/* Form elements - Borderless with bottom line only */
+/* Form elements - JSON code editor styling */
 textarea {
     background: var(--bg-color);
     color: var(--text-color);
-    border: none;
-    border-bottom: 1px solid var(--text-color);
-    padding: 16px 0;
-    font-family: 'SF Mono', 'Monaco', 'Cascadia Code', monospace;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    padding: 16px;
+    font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Courier New', monospace;
     font-size: 14px;
+    line-height: 1.5;
     resize: vertical;
-    height: 300px;
+    height: 500px;
     outline: none;
+    transition: border-color 0.2s ease;
+}
+
+textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 1px var(--accent-color);
 }
 
 textarea::placeholder {
     color: var(--muted-color);
+    font-style: italic;
 }
 
 /* Buttons - Rounded with border styling */
@@ -294,7 +348,7 @@ button:disabled:hover {
     border-collapse: collapse;
     background: var(--bg-color);
     margin: 0;
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
 }
 
 .main-table:hover {
@@ -303,8 +357,8 @@ button:disabled:hover {
 
 .main-table td {
     padding: 16px;
-    border-bottom: 1px solid var(--border-light);
-    border-right: 1px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-light);
     vertical-align: top;
 }
 
@@ -317,7 +371,7 @@ button:disabled:hover {
 }
 
 .key-column {
-    color: var(--text-color);
+    color: var(--json-key-color);
     font-weight: 600;
     width: 30%;
     background: var(--bg-color);
@@ -334,7 +388,7 @@ button:disabled:hover {
     border-collapse: collapse;
     margin: 16px 0;
     background: var(--bg-color);
-    border: 1px solid var(--border-light);
+    border: 2px solid var(--border-light);
 }
 
 .nested-table:hover {
@@ -343,8 +397,8 @@ button:disabled:hover {
 
 .nested-table td {
     padding: 8px 12px;
-    border-bottom: 1px solid var(--border-light);
-    border-right: 1px solid var(--border-light);
+    border-bottom: 2px solid var(--border-light);
+    border-right: 2px solid var(--border-light);
 }
 
 .nested-table tr:last-child td {
@@ -356,7 +410,7 @@ button:disabled:hover {
 }
 
 .nested-key {
-    color: var(--text-color);
+    color: var(--json-key-color);
     font-weight: 400;
     width: 35%;
     background: var(--bg-color);
@@ -392,20 +446,20 @@ button:disabled:hover {
 }
 
 .string-value {
-    color: var(--text-color);
+    color: var(--json-string-color);
 }
 
 .number-value {
-    color: var(--accent-color);
+    color: var(--json-number-color);
 }
 
 .boolean-value {
-    color: var(--text-color);
+    color: var(--json-boolean-color);
     font-weight: 600;
 }
 
 .null-value {
-    color: var(--muted-color);
+    color: var(--json-null-color);
 }
 
 /* Status messages */
@@ -488,8 +542,9 @@ button:disabled:hover {
     
     .input-section {
         flex: none;
-        padding-right: 0;
+        padding: 16px;
         max-width: none;
+        margin-right: 0;
     }
     
     .resize-handle {
